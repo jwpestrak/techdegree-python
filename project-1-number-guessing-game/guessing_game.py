@@ -28,7 +28,7 @@ def start_game():
             print("It's higher")
         attempts += 1
         
-    print("Got it")
+    print("Got it! You made", attempts, "attempts.")
     print("The game is over. Thanks for playing!")
     """Psuedo-code Hints
     
