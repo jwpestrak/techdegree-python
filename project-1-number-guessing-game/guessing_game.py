@@ -21,12 +21,17 @@ def start_game():
     attempts = 0
     
     while guess != answer:
-        guess = int(input("What is your guess? "))
-        if guess > answer:
-            print("It's lower")
-        elif guess < answer:
-            print("It's higher")
-        attempts += 1
+        try:
+            guess = int(input("What is your guess? "))
+            if guess > answer:
+                print("It's lower")
+            elif guess < answer:
+                print("It's higher")
+            attempts += 1
+        except ValueError:
+            print("Input must be an integer between 1 and 10.")
+            print("Please guess again using an integer.")
+            continue
         
     print("Got it! You made", attempts, "attempts.")
     print("The game is over. Thanks for playing!")
