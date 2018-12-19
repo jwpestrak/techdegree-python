@@ -1,13 +1,7 @@
+import csv
 import math
 import random
 
-players = []
-
-with open('soccer_players.csv', mode='r') as f:
-    for line in f:
-        if line.startswith('Name'): # ignore header line
-            next
-        players.append(line.split(','))
 
 def determine_team_size(players, teams):
     """Determine minimum count of players to be assigned to each team to ensure
@@ -58,17 +52,22 @@ def make_teams(players, teams):
 
     return my_teams
 
-# allocate the players across teams according to specified rules
-final_teams = make_teams(players, ['Sharks', 'Dragons', 'Raptors'])
-
-# output file named teams.txt with name of each team and its players
-with open('teams.txt', mode='w') as f:
-    for key, value in final_teams.items():
-        f.write(key+"\n")
-        for player in value:
-            del player[1] # remove height
-            f.write(', '.join(player))
-
 if __name__ == "__main__":
-    #final_teams = make_teams(players, teams)
-    print(final_teams)
+
+    players = []
+
+    with open('soccer_players.csv', newline='') as f:
+        playerreader = csv.reader(f)
+        players = list(playerreader)[1:] # ignore header line
+
+    # allocate the players across teams according to specified rules
+    final_teams = make_teams(players, ['Sharks', 'Dragons', 'Raptors'])
+
+    # output file named teams.txt with name of each team and its players
+    with open('teams.txt', mode='w') as f:
+        for key, value in final_teams.items():
+            f.write(key+"\n")
+            for player in value:
+                del player[1] # remove height
+                f.write(', '.join(player)+"\n")
+
