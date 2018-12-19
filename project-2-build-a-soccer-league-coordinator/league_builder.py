@@ -58,16 +58,17 @@ def make_teams(players, teams):
 
     return my_teams
 
+# allocate the players across teams according to specified rules
 final_teams = make_teams(players, ['Sharks', 'Dragons', 'Raptors'])
 
-# output file named teams.txt with name of team and its players
+# output file named teams.txt with name of each team and its players
 with open('teams.txt', mode='w') as f:
     for key, value in final_teams.items():
         f.write(key+"\n")
         for player in value:
             del player[1] # remove height
             f.write(', '.join(player))
-# 
+
 if __name__ == "__main__":
     #final_teams = make_teams(players, teams)
     print(final_teams)
