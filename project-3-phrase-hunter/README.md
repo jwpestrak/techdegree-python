@@ -1,3 +1,5 @@
+# Grading - I am attempting to pass "Meets Expectations"
+
 # Phrase Hunter
 
 This application is a one-player, terminal-based game. 
